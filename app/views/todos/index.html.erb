@@ -1,0 +1,16 @@
+<h1>Todos</h1>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= todo.title %> - <%= todo.description %>
+      <% if todo.completed %>
+        <span style="color: green;">Completed</span>
+      <% else %>
+        <span style="color: red;">Incomplete</span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Todo', new_todo_path %>
