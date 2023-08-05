@@ -1,16 +1,66 @@
-<h1>Todos</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todos App</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: pink;
+    }
 
-<ul>
-  <% @todos.each do |todo| %>
-    <li>
-      <%= todo.title %> - <%= todo.description %>
-      <% if todo.completed %>
-        <span style="color: green;">Completed</span>
-      <% else %>
-        <span style="color: red;">Incomplete</span>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+    .header {
+      color: blue;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-<%= link_to 'New Todo', new_todo_path %>
+    .description {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: green;
+      background-color: #ffc0cb; /* Background color for the first line */
+    }
+
+    .new-todo {
+      color: red;
+      background-color: #ff4500; /* Background color for the second line */
+    }
+
+    .log-out {
+      color: red;
+      background-color: #ff69b4; /* Background color for the third line */
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .action-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Todos App</div>
+  <div class="description">HERE YOU CAN ADD YOUR TASKS WHATEVER YOU WANT TO DO.</div>
+  <button><%= link_to 'New Todo', new_todo_path %></button>
+<button><%= link_to 'Log_out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "are you sure?"} %></button>
+</body>
+</html>

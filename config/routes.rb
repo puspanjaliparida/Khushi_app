@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'todos#index'
+  devise_for :users
   resources :todos
+  root to: 'todos#index'
   # Root route
   # Resourceful route for todos
   # Custom route example
