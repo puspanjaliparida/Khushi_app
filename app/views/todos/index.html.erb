@@ -1,66 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Todos App</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background-color: pink;
-    }
+<style>
+body {
+  background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/05/Free-Download-HD-Laptop-Backgrounds.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+  text-align: center;
+  }
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-    .header {
-      color: blue;
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
 
-    .description {
-      font-size: 18px;
-      margin-bottom: 20px;
-      text-align: center;
-      color: green;
-      background-color: #ffc0cb; /* Background color for the first line */
-    }
 
-    .new-todo {
-      color: red;
-      background-color: #ff4500; /* Background color for the second line */
-    }
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-    .log-out {
-      color: red;
-      background-color: #ff69b4; /* Background color for the third line */
-    }
+lt a:hover:not(.active) {
+  background-color: #111;
+}
 
-    .action-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.active {
+  background-color: #04AA6D;
+}
+</style>
+<style>
+button {
+  background-color: red;
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+  padding :10px 8px;
+}
+</style>
 
-    .action-button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <div class="header">Todos App</div>
-  <div class="description">HERE YOU CAN ADD YOUR TASKS WHATEVER YOU WANT TO DO.</div>
-  <button><%= link_to 'New Todo', new_todo_path %></button>
-<button><%= link_to 'Log_out', destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "are you sure?"} %></button>
-</body>
-</html>
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+<h1 style="font-size:60px;">Todos App</h1>
+<h1>Welcome !!!! Here you can add your tasks whatever you want to do<h1>
+<b>
+
+<ol>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= todo.title %> - <%= todo.description %> 
+      <% if todo.completed %>
+        <span style="color: green;"> --Task Completed</span><button><%= link_to "Remove item", todo, data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %></button>
+      <% else %>
+        <span style="color: black;"> --Task Incomplete</span><button><%= link_to "Remove item", todo, data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %></button>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<%= link_to 'New Todo', new_todo_path %>
+<%= link_to "log_out", destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm:  "are you sure?"}%>
+
+</b>
