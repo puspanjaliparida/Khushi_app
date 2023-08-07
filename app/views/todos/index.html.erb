@@ -56,9 +56,9 @@ button {
     <li>
       <%= todo.title %> - <%= todo.description %> 
       <% if todo.completed %>
-        <span style="color: green;"> --Task Completed</span><button><%= link_to "Remove item", todo, data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %></button>
+        <span style="color: green;">...Task Completed</span><button><%= link_to "Remove item", todo, data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %></button>
       <% else %>
-        <span style="color: black;"> --Task Incomplete</span><button><%= link_to "Remove item", todo, data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %></button>
+        <span style="color: black;">...Task Incomplete</span><button><%= link_to "Remove item", todo, data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} %></button>
       <% end %>
     </li>
   <% end %>
