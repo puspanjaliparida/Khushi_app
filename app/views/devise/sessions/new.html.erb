@@ -1,26 +1,106 @@
-<h2>Log in</h2>
+<style>
+  body {
+    background-image: url('https://www.techmen.net/wp-content/uploads/2019/02/wallpaper-laptop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  .login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+  }
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  .login-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 
-  <% if devise_mapping.rememberable? %>
+  .field label {
+    font-weight: bold;
+  }
+
+  .field input[type="text"],
+  .field input[type="password"],
+  .field input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .remember-field {
+    display: flex;
+    align-items: center;
+  }
+
+  .actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .actions input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .actions input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .links {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .links a {
+    color: #007bff;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<div class="login-container">
+  <h2>Log in</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field remember-field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="links">
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
+</div>
+</body>
 
-<%= render "devise/shared/links" %>
