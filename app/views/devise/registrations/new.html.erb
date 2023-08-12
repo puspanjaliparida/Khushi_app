@@ -1,31 +1,5 @@
-<style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/08/Computer-background-cool-desktop.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+<h2>Sign up</h2>
 
-    .form-container {
-      background-color: rgba(255, 255, 255, 0.8);
-      width: 400px;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Rest of your existing CSS styles */
-  </style>
-</head>
-<body>
-  <div class="form-container">
-  <h2>Sign up</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -53,3 +27,75 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<style>
+  body {
+    background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/07/Laptop-HD-Picture.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+  }
+
+  .login-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .field label {
+    font-weight: bold;
+  }
+
+  .field input[type="text"],
+  .field input[type="password"],
+  .field input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .remember-field {
+    display: flex;
+    align-items: center;
+  }
+
+  .actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .actions input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .actions input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .links {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .links a {
+    color: #007bff;
+    text-decoration: none;
+  }
